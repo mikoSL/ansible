@@ -1,0 +1,21 @@
+- name: Create a new EC2 instance with ansible.
+  hosts: localhost
+  gather_facts: False
+  vars:
+    # requires ec2_stack_name, ec2_region and ec2 key_name
+    keypair: youkeyname
+    instance_type: t2.micro
+    image: ami-6871a115
+    region: us-east-1
+  tasks:
+    - name: Launch a new instance
+      ec2:
+        key_name: "{{ keypair }}"
+        group: default
+        instance_type: "{{ instance_type }}"
+        image: "{{ image }}"
+        wait: true
+        region: "{{ region }}"
+      register: ec2
+    - name: Print all ec2 variables.
+      debug: var-ec2

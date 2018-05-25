@@ -1,0 +1,2 @@
+localhost ansible_connection=local ansible_user=ec2-user ansible_python_interpreter=/Users/pekka/miniconda3/bin/python3
+
